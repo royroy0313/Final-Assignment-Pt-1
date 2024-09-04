@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Portal</title>
+</head>
+<body>
+    <h1>Financial Portal</h1>
+    
+    <form action="/financial_portal" method="POST">
+        <label for="text">Enter text for analysis:</label>
+        <textarea id="text" name="text" rows="4" cols="50"></textarea>
+        <button type="submit">Analyze Text</button>
+    </form>
+
+    {% if sentiment %}
+        <h2>Sentiment Analysis</h2>
+        <p>Polarity: {{ sentiment.polarity }}</p>
+        <p>Subjectivity: {{ sentiment.subjectivity }}</p>
+    {% endif %}
+    
+    <a href="/">Go Back</a>
+</body>
+</html>
+
