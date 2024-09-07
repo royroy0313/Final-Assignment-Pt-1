@@ -4,7 +4,6 @@ import os
 import openai
 from textblob import TextBlob
 
-# Configure the API keys
 palm_api_key = "YOUR_PALM_API_KEY"
 palm.configure(api_key=palm_api_key)
 
@@ -24,7 +23,6 @@ def ai_agent():
 def ai_agent_reply():
     q = request.form.get("q")
     try:
-        # OpenAI GPT-3.5 API call
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",
             messages=[{"role": "user", "content": q}],
@@ -37,7 +35,6 @@ def ai_agent_reply():
 
 @app.route("/singapore_joke", methods=["POST"])
 def singapore_joke():
-    # A common joke in Singapore
     joke = "When there is a long queue, we love to just queue blindly without knowing what the line is for."
     return render_template("joke.html", joke=joke)
 
@@ -46,7 +43,6 @@ def financial_portal():
     if request.method == "POST":
         text = request.form.get("text")
         if text:
-            # Analyze text with TextBlob
             blob = TextBlob(text)
             sentiment = blob.sentiment
             return render_template("financial_portal.html", sentiment=sentiment)
